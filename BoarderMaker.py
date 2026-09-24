@@ -2,23 +2,13 @@ from PIL import Image
 from PIL import ImageFilter
 from PIL import ImageTk
 import tkinter as Tk
+from tkinter import filedialog
 
-root = Tk.Tk()
-root.title("Sticker Border Maker")
+path = ""
 
-
-StickerPath = Tk.Label(root, Text="Sticker Path: ")
-StickerPath.pack()
-PathButton = Tk.Button(root, command=filedialog.askopenfilename())
-BoarderSize = Tk.Label(root, Text="Boarder Size: ")
-BoarderSize.pack()
-BoarderScale = Tk.Scale(root,from_=1, to=100, orient="horizontal")
-BoarderScale.pack()
-Generate = Tk.Button(root, command=boardermaker())
-Generate.pack()
-
-path = input("Put image path (no quotes): ")
-thickness = int(input("Put border Size (pxls): "))
+def choose_file():
+    global path
+    path = filedialog.askopenfilename()
 
 def boardermaker(img, thickness):
 
@@ -39,5 +29,19 @@ def boardermaker(img, thickness):
     sticker = Image.alpha_composite(border, canvas)
 
     sticker.save("sticker.png")
+
+root = Tk.Tk()
+root.title("Sticker Border Maker")
+
+StickerPath = Tk.Label(root, text="Sticker Path: ")
+StickerPath.pack()
+PathButton = Tk.Button(root, text="Choose File", command=choose_file)
+PathButton.pack()
+BoarderSize = Tk.Label(root, text="Boarder Size: ")
+BoarderSize.pack()
+BoarderScale = Tk.Scale(root,from_=1, to=100, orient="horizontal")
+BoarderScale.pack()
+Generate = Tk.Button(root, text="Generate", command=boardermaker)
+Generate.pack()
 
 root.mainloop()
