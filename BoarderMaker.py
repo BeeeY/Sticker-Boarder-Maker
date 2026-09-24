@@ -10,7 +10,7 @@ def choose_file():
     global path
     path = filedialog.askopenfilename()
 
-def boardermaker(img, thickness):
+def boardermaker(path, thickness):
 
     img = Image.open(path)
     img = img.convert("RGBA")
@@ -30,6 +30,10 @@ def boardermaker(img, thickness):
 
     sticker.save("sticker.png")
 
+def generate():
+    thickness = BoarderScale.get()
+    boardermaker(path,thickness)
+
 root = Tk.Tk()
 root.title("Sticker Border Maker")
 
@@ -41,7 +45,7 @@ BoarderSize = Tk.Label(root, text="Boarder Size: ")
 BoarderSize.pack()
 BoarderScale = Tk.Scale(root,from_=1, to=100, orient="horizontal")
 BoarderScale.pack()
-Generate = Tk.Button(root, text="Generate", command=boardermaker)
+Generate = Tk.Button(root, text="Generate", command=generate)
 Generate.pack()
 
 root.mainloop()
