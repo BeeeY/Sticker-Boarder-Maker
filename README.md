@@ -20,7 +20,9 @@ Example Sticker: Sorry about the low quality, I don't know how to make pixel art
 
 ## Built With 
 -Python
+
 -Tkinter
+
 -Pillow
 
 
