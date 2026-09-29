@@ -18,6 +18,10 @@ Example Sticker: Sorry about the low quality, I don't know how to make pixel art
 
 <img width="100" height="100" alt="example sticker" src="https://github.com/user-attachments/assets/d6bf740c-102c-4831-8b3d-f7bbc1783443" />
 
+## Built With 
+-Python
+-Tkinter
+-Pillow
 
 
 
